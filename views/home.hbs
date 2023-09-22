@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{>header}}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+        }
+
+        .table-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+            border: 1px solid blue;
+            font-weight: bold;
+            font-size: large;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        @media screen and (max-width: 600px) {
+
+            th,
+            td {
+                padding: 10px;
+            }
+        }
+
+        tbody tr:hover {
+            background-color: greenyellow;
+            color: black;
+        }
+
+        td button {
+            margin-inline: 5px;
+            border: none;
+            background: none;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        .fa-xmark {
+            font-weight: bolder;
+            color: red;
+            font-size: 20px;
+        }
+
+        .fa-pen-to-square {
+            font-size: 20px;
+
+            font-weight: bolder;
+            color: blue;
+        }
+
+        a {
+            text-decoration: none;
+            color: blanchedalmond;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mx-auto text-center  text-warning fw-bolder fs-5 py-4">
+        <h3>User Management System</h3>
+    </div>
+    <div class="text-success mb-2 text-center fs-5">
+        <a href="/addUser"><i class="fa-solid fa-users "></i> Add User </a>
+    </div>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Gender</th>
+                    <th>Role</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            {{#if user.Users.length}} <!-- Access user data as user.Users -->
+            <tbody>
+                {{#each user.Users}} <!-- Access user data as user.Users -->
+                <tr>
+                    <td>{{this.username}}</td>
+                    <td>{{this.email}}</td>
+                    <td>{{this.phone}}</td>
+                    <td>{{this.gender}}</td>
+                    <td>{{this.role}}</td>
+                    <td>
+                        <button><a href="/delete/{{this._id}}"><i class="fa-solid fa-xmark"></i></a></button>
+                        <button><a href="/update?id={{this._id}}"><i class="fa-solid fa-pen-to-square"></i></a></button>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+            {{else}}
+            <tr>
+                <td colspan="6">No users found.</td>
+            </tr>
+            {{/if}}
+        </table>
+    </div>
+
+</body>
+
+</html>
