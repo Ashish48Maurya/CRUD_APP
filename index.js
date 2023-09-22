@@ -24,10 +24,10 @@ hbs.registerHelper('eq', function (value1, value2, options) {
 });
 
 const start = async () => {
-    // await mongoConnect("mongodb://127.0.0.1:27017/user")
-    await mongoConnect(process.env.MONGODB_URL)
+    await mongoConnect("mongodb://127.0.0.1:27017/user")
+    // await mongoConnect(process.env.MONGODB_URL)
     app.listen(port, () => {
-        console.log(`Server is listening at https://crud-app-kappa-one.vercel.app/`)
+        console.log(`Server is listening at http://localhost:${port}`)
     })
 }
 start()
