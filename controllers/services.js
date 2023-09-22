@@ -1,6 +1,7 @@
 exports.home = async (req, res) => {
     try {
-        const response = await fetch('http://localhost:5000/api/users')
+        // const response = await fetch('http://localhost:5000/api/users')
+        const response = await fetch('https://crud-app-kappa-one.vercel.app/api/users')
         const data = await response.json();
         res.render('home', { user: data });
     }
@@ -19,7 +20,8 @@ exports.back = (req, res) => {
 
 exports.update = async (req, res) => {
     try {
-        const response = await fetch(`http://localhost:5000/api/users?id=${req.query.id}`);
+        // const response = await fetch(`http://localhost:5000/api/users?id=${req.query.id}`);
+        const response = await fetch(`https://crud-app-kappa-one.vercel.app/api/users?id=${req.query.id}`);
         const userData = await response.json();
         console.log(userData)
         res.render('updateUser', { user: userData });

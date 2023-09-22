@@ -27,7 +27,7 @@ const start = async () => {
     // await mongoConnect("mongodb://127.0.0.1:27017/user")
     await mongoConnect(process.env.MONGODB_URL)
     app.listen(port, () => {
-        console.log(`Server is listening at http://localhost:${port}`)
+        console.log(`Server is listening at https://crud-app-kappa-one.vercel.app/`)
     })
 }
 start()
